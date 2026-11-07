@@ -1,0 +1,21 @@
+schema: osera-patch-evidence/0.1.0
+producer: moderne
+release: 2.7.0.1-backpatch-00001
+baseline: v2.7.0+backpatch.baseline
+fixes:
+  - cve: CVE-2023-51074
+    upstream_fix_url: https://github.com/json-path/JsonPath/commit/71a09c1193726c010917f1157ecbb069ad6c3e3b
+    advisory_url: https://nvd.nist.gov/vuln/detail/CVE-2023-51074
+    patch_commit_url: https://github.com/moderne-backpatch-alliance/backpatch-JsonPath/commit/f9f13dc
+    basis: backport
+    artifacts:
+      - com.jayway.jsonpath:json-path
+    note: New in this release; ported onto 2.7.0; fixed at 2.7.0.1-backpatch-00001 (backpatch-JsonPath@f9f13dc).
+tests:
+  commit: f9f13dcfeb186afa5efecc57a2da33c2e2e1cdc9
+  command: gradlew :json-path:test :json-path-assert:test --continue
+  runtime: openjdk version 1.8.0_382, Gradle wrapper
+  report: json-path-2.7.0.1-backpatch-00001-tests.zip
+  report_sha256: 8343135e5018bff02b40de13671b35b29c6e7587e96f899eb1f97d74a1fd90cd
+  result: pass
+  note: 937 tests at the patch commit, 13 of them skipped by the suite, 0 failed, 0 errors.
